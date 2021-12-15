@@ -1,0 +1,41 @@
+{{> nav}}
+
+<form action="/bodega" method="post" enctype="multipart/form-data">
+    <input placeholder="Nombre del articulo" name="name" required>
+    <input placeholder="Describa el articulo" name="desc" required>
+    <input placeholder="Estado del articulo" name="state" required>
+    <input type="number" placeholder="Precio del articulo" name="price" required>
+    <input type="file" name="img" accept="image/x-png,image/gif,image/jpeg" required>
+    <button type="submit">Crear articulo</button>
+</form>
+
+<div class="row justify-content-around">
+
+{{#each articulos}}
+<div class="card col-3">
+  <img src="./img/{{img}}" class="card-img-top" alt="...">
+  <div class="card-body">
+      <h4>{{name}}</h4>
+      <p>{{price}}</p>
+      <p>{{state}}</p>
+      <p>{{desc}}</p>
+     <form class="mb-2" action="/bodega?_method=DELETE" method="post">
+        <input type="hidden" name="_id" value={{_id}}>
+        <button type="submit">Borrar articulo</button>
+     </form>
+     <form action="/bodega?_method=PUT" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="_id" value={{_id}}>
+        <input name="img" type="hidden" value="{{img}}">
+        <input class="mb-1" type="file" name="img" accept="image/x-png,image/gif,image/jpeg">
+        <input name="name" placeholder="{{name}}">
+        <input name="price" type="number" placeholder="{{price}}">
+        <input name="state" placeholder="{{state}}">
+        <input name="desc" placeholder="{{desc}}">
+        <button type="submit">Actualizar articulo</button>
+     </form>     
+    </div>
+</div>
+
+{{/each}}
+
+</div>
