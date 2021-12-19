@@ -5,7 +5,7 @@ export const viewLogin = (req,res) =>{
     res.status(200).render('login')
 }
 export const login = async (req,res) =>{
-    res.status(200).redirect('/bodega')
+    res.status(200).redirect('/bodegaen')
 }
 export const viewRegister = (req,res) =>{
     

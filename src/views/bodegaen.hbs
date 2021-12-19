@@ -1,6 +1,6 @@
 {{> nav}}
 
-<form action="/bodega" method="post" enctype="multipart/form-data">
+<form action="/bodegaen" method="post" enctype="multipart/form-data">
     <input placeholder="Nombre del articulo" name="name" required>
     <input placeholder="Describa el articulo" name="desc" required>
     <input placeholder="Estado del articulo" name="state" required>
@@ -19,11 +19,11 @@
       <p>{{price}}</p>
       <p>{{state}}</p>
       <p>{{desc}}</p>
-     <form class="mb-2" action="/bodega?_method=DELETE" method="post">
+     <form class="mb-2" action="/bodegaen?_method=DELETE" method="post">
         <input type="hidden" name="_id" value={{_id}}>
         <button type="submit">Borrar articulo</button>
      </form>
-     <form action="/bodega?_method=PUT" method="post" enctype="multipart/form-data">
+     <form action="/bodegaen?_method=PUT" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_id" value={{_id}}>
         <input name="img" type="hidden" value="{{img}}">
         <input class="mb-1" type="file" name="img" accept="image/x-png,image/gif,image/jpeg">

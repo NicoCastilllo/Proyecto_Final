@@ -1,5 +1,5 @@
 
-export const pañolero = async (req,res,next)=>{
+export const encargado = async (req,res,next)=>{
     if( req.isAuthenticated()){
         next()
     }else{

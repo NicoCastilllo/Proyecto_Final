@@ -41,8 +41,8 @@ export const ConnectPassport = () => {
               const newUser = new User()
               newUser.username = username
               newUser.password = createHash(password)
-              newUser.name=req.body.name 
-              newUser.type="pañolero"
+              newUser.name= req.body.name 
+              newUser.type= "encargado"
 
               newUser.save((err) => {
                 if (err) { throw err }

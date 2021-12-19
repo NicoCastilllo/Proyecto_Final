@@ -1,11 +1,11 @@
 import Item from '../models/bodega.js'
 
 export const viewBodega = async (req,res) => {
-    try {
-        let item =  await Item.find({}).lean()
-          res.status(200).render('bodega',{articulos:item})
-        } 
-        catch (e) { console.log(e) }
+  try {
+      let item =  await Item.find({}).lean()
+        res.status(200).render('bodegaen',{articulos:item})
+      } 
+      catch (e) { console.log(e) }
 }
 
 export const createItem = async (req,res) => {
@@ -21,7 +21,7 @@ export const createItem = async (req,res) => {
           if(err) return res.status(500).send({ message : err })
           return res.status(200).render("nofound",{message:"no se encontro el Producto"})
           })
-        res.status(200).redirect('/bodega')
+        res.status(200).redirect('/bodegaen')
         
       } 
       catch (e) { console.log(e) }
@@ -35,7 +35,7 @@ export const delItem = async (req,res) => {
              return res.status(200).render("nofound",{message:"no se encontro el Producto"})
            }
            await Item.deleteOne({ _id: req.body._id }) 
-           res.status(200).redirect('/bodega')
+           res.status(200).redirect('/bodegaen')
     } 
      catch (e) { console.log(e) }
      
@@ -60,7 +60,7 @@ export const updateItem = async (req,res) => {
           return res.status(200).render("nofound",{message:"no se encontro el Producto"})
           })
         }
-        res.status(200).redirect('/bodega')
+        res.status(200).redirect('/bodegaen')
       } 
       catch (e) { console.log(e) }
      

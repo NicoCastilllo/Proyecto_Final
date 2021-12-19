@@ -9,8 +9,9 @@ import { ConnectPassport } from './config/connectPassport.js'
 import session from 'express-session'
 import MongoStore from 'connect-mongo'
 import passport from 'passport'
-import routesBodega from './src/routes/routesBodega.js'
 import routesUsers from './src/routes/routesUsers.js'
+import routesEncargado from './src/routes/routesEncargado.js'
+import routesPanolero from './src/routes/routesPanolero.js'
 
 const app = express()
 
@@ -69,8 +70,11 @@ conectarDB()
 ConnectPassport()
 app.use(passport.initialize())
 app.use(passport.session())
-routesBodega(app)
+routesEncargado(app)
 routesUsers(app)
+routesPanolero(app)
+
+
 
 app.listen(3000, () => {
     console.log(`el servidor esta corriendo en : http://localhost:${3000}`)
