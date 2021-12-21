@@ -3,8 +3,8 @@
 <div class="row justify-content-around">
 
 {{#each articles}}
-<div class="card col-3">
-  <img src="./img/{{img}}" class="card-img-top" alt="...">
+<div class="card col-3 m-3">
+  <img src="./img/items/{{img}}" class="card-img-top" alt="...">
   <div class="card-body">
       <h4>{{name}}</h4>
       <p>{{price}}</p>
@@ -13,7 +13,7 @@
      <form action="/bodegapl?_method=PUT" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_id" value={{_id}}>
         <input name="state" placeholder="{{state}}">
-        <button type="submit">Actualizar estado</button>
+        <button class="mt-3" type="submit">Actualizar estado</button>
      </form>     
     </div>
 </div>

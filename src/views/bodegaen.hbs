@@ -12,8 +12,8 @@
 <div class="row justify-content-around">
 
 {{#each articulos}}
-<div class="card col-3">
-  <img src="./img/{{img}}" class="card-img-top" alt="...">
+<div class="card col-3 m-2">
+  <img src="./img/items/{{img}}" class="card-img-top" alt="...">
   <div class="card-body">
       <h4>{{name}}</h4>
       <p>{{price}}</p>
@@ -31,7 +31,7 @@
         <input name="price" type="number" placeholder="{{price}}">
         <input name="state" placeholder="{{state}}">
         <input name="desc" placeholder="{{desc}}">
-        <button type="submit">Actualizar articulo</button>
+        <button class="mt-3" type="submit">Actualizar articulo</button>
      </form>     
     </div>
 </div>

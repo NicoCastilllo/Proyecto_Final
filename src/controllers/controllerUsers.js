@@ -4,7 +4,7 @@ export const viewLogin = (req,res) =>{
     
     res.status(200).render('login')
 }
-export const login = async (req,res) =>{
+export const login = (req,res) =>{
     res.status(200).redirect('/bodegapl')
 }
 export const viewRegister = (req,res) =>{
@@ -12,12 +12,16 @@ export const viewRegister = (req,res) =>{
     res.status(200).render('register')
 }
 
-export const register = async (req,res) =>{
-       try{
-        const user = await User(req.body)
-        user.save()
-        res.status(200).redirect('/login')
-      }catch(e){console.log(e)}
+export const register = (req,res) =>{
+  const EDFile = req.files.profile
+
+  EDFile.mv(`./public/img/perfiles/${req.body.profile}`,err => {
+    if(err) return res.status(500).send({ message : err })
+    return res.status(200).render("nofound",{message:"no se encontro el Producto"})
+    })
+    res.status(200).redirect('/bodegapl')
+
+
 }
 
 export const logout = async (req, res) => {

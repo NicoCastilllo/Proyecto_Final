@@ -17,7 +17,7 @@ const createHash =(password) => {
 export const ConnectPassport = () => {
 
   passport.use('login', new LocalStrategy({ passReqToCallback: true },
-  (req, username, password, done) => {
+  (req,res, username, password, done) => {
       User.findOne({ username: username },
             (err, user) => {
           if (err) return done(err)
@@ -38,13 +38,16 @@ export const ConnectPassport = () => {
             if (user) {
               return done(null, false)
             } else {
+              req.body.profile = Math.floor(Math.random()*10000000) + ".jpg"
               const newUser = new User()
               newUser.username = username
               newUser.password = createHash(password)
               newUser.name= req.body.name 
-              newUser.type= "Pañolero"
-
-              newUser.save((err) => {
+              newUser.type= req.body.type
+              newUser.phone= req.body.phone
+              newUser.profile = req.body.profile
+    
+                newUser.save((err) => {
                 if (err) { throw err }
                 return done(null, newUser)
               })

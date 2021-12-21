@@ -1,5 +1,5 @@
 <main class="row justify-content-around">
-  <form action="register" method="post" class="col-md-4 mt-5">
+  <form action="register" method="post" class="col-md-4 mt-5" enctype="multipart/form-data" >
 
     <div class="form-floating mb-3">
       <input type="email" class="form-control" name="username"  placeholder="nombre@ejemplo.com">
@@ -20,6 +20,10 @@
     <div class="form-floating mb-3">
       <input type="number" class="form-control" name="phone"  placeholder="Tu numero de telefono">
       <label for="floatingInput">Telefono</label>
+    </div>
+    <div class="mb-3">
+      <p>Foto de perfil:</p>
+      <input type="file" name="profile" accept="image/x-png,image/gif,image/jpeg" required>
     </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Registrarse</button>
   </form>

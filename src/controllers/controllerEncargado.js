@@ -42,6 +42,14 @@ export const delItem = async (req,res) => {
 }
 
 export const updateItem = async (req,res) => {
+    const item = {}
+    if(req.body.name) item.name = req.body.name
+    if(req.body.desc) item.desc = req.body.desc
+    if(req.body.state) item.state = req.body.state
+    if(req.body.price) item.price = req.body.price
+    if(req.body.img) item.img = req.body.img
+    console.log(item)
+
     try {
         const itemfound = await Item.find({_id:req.body._id}).lean()
             if ((Object.entries(itemfound).length === 0)) {
@@ -49,7 +57,7 @@ export const updateItem = async (req,res) => {
             }
         await Item.findOneAndUpdate(
           { _id: req.body._id },
-          { $set: req.body },
+          { $set: item },
           { new: true }
         )  
         if(req.files){
